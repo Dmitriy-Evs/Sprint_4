@@ -16,24 +16,27 @@ public class OrderPage {
     private By nameField = By.xpath(".//input[@placeholder = '* Имя']");
 
     //Метод для заполнения поля Имя
-    public void enterName(String number) {
-        webDriver.findElement(nameField).sendKeys(number);
+    public String enterName(String name) {
+        webDriver.findElement(nameField).sendKeys(name);
+        return name;
     }
 
     //Локатор для поля Фамилия
     private By secondNameField = By.xpath(".//input[@placeholder = '* Фамилия']");
 
     //Метод для заполнения поля Фамилия
-    public void enterSecondName(String number) {
-        webDriver.findElement(secondNameField).sendKeys(number);
+    public String enterSecondName(String surname) {
+        webDriver.findElement(secondNameField).sendKeys(surname);
+        return surname;
     }
 
     //Локатор для поля Адрес
     private By addressField = By.xpath(".//input[@placeholder = '* Адрес: куда привезти заказ']");
 
     //Метод для заполнения поля Адрес
-    public void enterAddress(String number) {
-        webDriver.findElement(addressField).sendKeys(number);
+    public String enterAddress(String address) {
+        webDriver.findElement(addressField).sendKeys(address);
+        return address;
     }
 
     //Локатор для поля станция
@@ -48,25 +51,29 @@ public class OrderPage {
     //Локатор для конкретной станции
     private By stationChoose = By.className("select-search__row");
 
-    //Метод для заполнения поля Станция
-    public void clickStation() {
-        webDriver.findElement(stationChoose).click();
-    }
 
     //Локатор для конкретной станции второй вариант
     private By stationChoose2 = By.xpath(".//button[@value=\"3\"]");
 
-    //Метод для заполнения поля Станция второй вариант
-    public void clickStation2() {
-        webDriver.findElement(stationChoose2).click();
+
+    public String clickStation(String station){
+        if
+        (station == "Бульвар Рокоссовского")
+            webDriver.findElement(stationChoose).click();
+        else
+            webDriver.findElement(stationChoose2).click();
+        return station;
     }
+
+
 
     //Локатор для поля Телефон
     private By phoneField = By.xpath(".//input[@placeholder = '* Телефон: на него позвонит курьер']");
 
     //Метод для заполнения поля Телефон
-    public void enterPhone(String number) {
+    public String enterPhone(String number) {
         webDriver.findElement(phoneField).sendKeys(number);
+        return number;
     }
 
     //Локатор для кнопки Далее
@@ -81,9 +88,10 @@ public class OrderPage {
     private By calendarField = By.xpath(".//input[@placeholder = '* Когда привезти самокат']");
 
 
-    public void enterDate(String number) {
-        webDriver.findElement(calendarField).sendKeys(number);
+    public String enterDate(String date) {
+        webDriver.findElement(calendarField).sendKeys(date);
         webDriver.findElement(calendarField).sendKeys(Keys.ENTER);
+        return date;
     }
 
 
@@ -92,6 +100,15 @@ public class OrderPage {
     //Метод для клика по полю срока
     public void clickRentalPeriodField() {
         webDriver.findElement(rentalPeriodField).click();
+    }
+
+    public String clickRentalPeriod(String period){
+        if
+        (period == "2 суток")
+            clickDayOfRental();
+        else
+            clickDayOfRental2();
+        return period;
     }
 
     //Локатор для срока аренды
@@ -106,12 +123,26 @@ public class OrderPage {
         webDriver.findElements(dayOfRental).get(2).click();
     }
 
+
+
+
     //Локатор для выбора цвета
     private By colorScooter = By.xpath("//*[.='чёрный жемчуг']");
     //Метод для клика по выбору цвета
     public void clickColorScooter() {
         webDriver.findElement(colorScooter).click();
     }
+
+    public String clickColorScooterField(String color){
+        if
+        (color == "черный жемчуг")
+            clickColorScooter();
+        else
+            clickColorScooter2();
+        return color;
+    }
+
+
 
     //Локатор для выбора цвета второй вариант
     private By colorScooter2 = By.xpath("//*[.='серая безысходность']");
@@ -121,12 +152,17 @@ public class OrderPage {
     }
 
 
+
+
+
+
     //Локатор для поля Комментарий курьеру
-    private By comment = By.xpath(".//input[@placeholder = 'Комментарий для курьера']");
+    private By commentField = By.xpath(".//input[@placeholder = 'Комментарий для курьера']");
 
     //Метод для заполнения поля Комментарий курьеру
-    public void enterComment(String number) {
-        webDriver.findElement(comment).sendKeys(number);
+    public String enterComment(String comment) {
+        webDriver.findElement(commentField).sendKeys(comment);
+        return comment;
     }
 
     //Локатор для кнопки заказать после оформления

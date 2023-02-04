@@ -49,12 +49,13 @@ public class MainPage {
 
 
     //Метода для клика по кнопке заказать
-    public void clickOrderButton(String button){
+    public String clickOrderButton(String button){
         if
-        (button == "верхняя кнопка")
-       webDriver.findElement(orderUp).click();
+        (button == "Верхняя кнопка")
+            webDriver.findElement(orderUp).click();
         else
             webDriver.findElement(orderDown).click();
+        return button;
     }
 
 

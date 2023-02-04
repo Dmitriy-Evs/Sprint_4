@@ -28,8 +28,8 @@ public class FaqTest {
 
     @Test
     public void checkFaq(){
-            MainPage mainPage = new MainPage(driver);
-            mainPage.clickCookieButton();
+        MainPage mainPage = new MainPage(driver);
+        mainPage.clickCookieButton();
 
         new WebDriverWait(driver, Duration.ofSeconds(1));
 
