@@ -6,8 +6,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.praktikum.yandex.pom.MainPage;
+
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
@@ -21,7 +25,7 @@ public class FaqTest {
     public void setIp(){
 
         //Для выбора браузера необходимо раскомментировать нужную строку
-        // driver = new ChromeDriver();
+        //driver = new ChromeDriver();
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.get("https://qa-scooter.praktikum-services.ru/");
@@ -50,6 +54,7 @@ public class FaqTest {
     public void checkFaq() {
         MainPage mainPage = new MainPage(driver);
         mainPage.clickCookieButton();
+        new WebDriverWait(driver, Duration.ofSeconds(1));
         mainPage.clickFaqButton(elementIndex);
         String actualText = mainPage.faqAnswer(elementIndex);
         assertEquals("Ответ на вопрос №" +elementIndex + " неверен", expectedText, actualText);

@@ -143,18 +143,12 @@ public class OrderPage {
     }
 
 
-
     //Локатор для выбора цвета второй вариант
     private By colorScooter2 = By.xpath("//*[.='серая безысходность']");
     //Метод для клика по выбору цвета
     public void clickColorScooter2() {
         webDriver.findElement(colorScooter2).click();
     }
-
-
-
-
-
 
     //Локатор для поля Комментарий курьеру
     private By commentField = By.xpath(".//input[@placeholder = 'Комментарий для курьера']");
