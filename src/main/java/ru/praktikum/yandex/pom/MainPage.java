@@ -11,12 +11,6 @@ public class MainPage {
     }
     private final WebDriver webDriver;
 
-    //Метод для открытия главной страницы
-    public void openMainPage(){
-        webDriver.get("https://qa-scooter.praktikum-services.ru/");
-    }
-
-
     //Локатор для принятия кук
     private By cookieButton = By.className("App_CookieButton__3cvqF");
     // Метод для принятия кук
@@ -30,15 +24,14 @@ public class MainPage {
     private By coastQuestion = By.className("accordion__item");
 
 
-
     //Метод для клика по выпадашке
     public void clickFaqButton(int index) {
         webDriver.findElements(coastQuestion).get(index).click();
     }
 
     //Методы для получения текста ответа
-    public String faqAnswer(String answer) {
-        return webDriver.findElement(By.xpath(answer)).getText();
+    public String faqAnswer(int elementIndex) {
+        return webDriver.findElement(By.xpath(".//div[@id = 'accordion__panel-" + elementIndex + "']")).getText();
     }
 
 
